@@ -11,5 +11,9 @@ class ConstHelper {
         PlantsDetail(path = "plants/{plantId}"),
         PlantsEdit(path = "plants/{plantId}/edit"),
 
+        Foods(path = "foods"),
+        FoodsAdd(path = "foods/add"),
+        FoodsDetail(path = "foods/{foodId}"),
+        FoodsEdit(path = "foods/{foodId}/edit"),
     }
 }

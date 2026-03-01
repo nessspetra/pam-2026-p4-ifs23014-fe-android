@@ -15,9 +15,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Fastfood // Icon untuk Foods
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Nature
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.outlined.Fastfood // Icon outline untuk Foods
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Nature
 import androidx.compose.material.icons.outlined.Person
@@ -54,14 +56,20 @@ sealed class MenuBottomNav(
 ) {
     object Home : MenuBottomNav(ConstHelper.RouteNames.Home.path, "Home", Icons.Outlined.Home, Icons.Filled.Home)
     object Plants : MenuBottomNav(ConstHelper.RouteNames.Plants.path, "Plants", Icons.Outlined.Nature, Icons.Filled.Nature)
+
+    // Penambahan menu Foods
+    object Foods : MenuBottomNav(ConstHelper.RouteNames.Foods.path, "Foods", Icons.Outlined.Fastfood, Icons.Filled.Fastfood)
+
     object Profile : MenuBottomNav(ConstHelper.RouteNames.Profile.path, "Profile", Icons.Outlined.Person, Icons.Filled.Person)
 }
 
 @Composable
 fun BottomNavComponent(navController: NavHostController) {
+    // Memasukkan Foods ke dalam list menu agar ditampilkan
     val items: List<MenuBottomNav> = listOf(
         MenuBottomNav.Home,
         MenuBottomNav.Plants,
+        MenuBottomNav.Foods, // Menu Foods ditambahkan di sini
         MenuBottomNav.Profile,
     )
 

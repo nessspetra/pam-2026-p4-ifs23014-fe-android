@@ -24,13 +24,21 @@ import org.delcom.pam_p4_ifs23014.ui.screens.PlantsDetailScreen
 import org.delcom.pam_p4_ifs23014.ui.screens.PlantsEditScreen
 import org.delcom.pam_p4_ifs23014.ui.screens.PlantsScreen
 import org.delcom.pam_p4_ifs23014.ui.screens.ProfileScreen
+// Tambahan import untuk Foods Screens
+import org.delcom.pam_p4_ifs23014.ui.screens.FoodsScreen
+import org.delcom.pam_p4_ifs23014.ui.screens.FoodsAddScreen
+import org.delcom.pam_p4_ifs23014.ui.screens.FoodsDetailScreen
+import org.delcom.pam_p4_ifs23014.ui.screens.FoodsEditScreen
 import org.delcom.pam_p4_ifs23014.ui.viewmodels.PlantViewModel
+// Tambahan import untuk FoodViewModel
+import org.delcom.pam_p4_ifs23014.ui.viewmodels.FoodViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun UIApp(
     navController: NavHostController = rememberNavController(),
-    plantViewModel: PlantViewModel
+    plantViewModel: PlantViewModel,
+    foodViewModel: FoodViewModel // ViewModel baru untuk Foods
 ) {
     // Inisialisasi SnackbarHostState
     val snackbarHostState = remember { SnackbarHostState() }
@@ -66,6 +74,10 @@ fun UIApp(
                     plantViewModel = plantViewModel
                 )
             }
+
+            // ==========================================
+            //                 PLANTS
+            // ==========================================
 
             // Plants
             composable(
@@ -121,7 +133,65 @@ fun UIApp(
                     plantId = plantId
                 )
             }
+
+            // ==========================================
+            //                 FOODS
+            // ==========================================
+
+            // Foods Screen (Daftar Makanan)
+            composable(
+                route = ConstHelper.RouteNames.Foods.path,
+            ) { _ ->
+                FoodsScreen(
+                    navController = navController,
+                    foodViewModel = foodViewModel
+                )
+            }
+
+            // Foods Add Screen (Tambah Makanan)
+            composable(
+                route = ConstHelper.RouteNames.FoodsAdd.path,
+            ) { _ ->
+                FoodsAddScreen(
+                    navController = navController,
+                    snackbarHost = snackbarHostState,
+                    foodViewModel = foodViewModel
+                )
+            }
+
+            // Foods Detail Screen (Detail Makanan)
+            composable(
+                route = ConstHelper.RouteNames.FoodsDetail.path,
+                arguments = listOf(
+                    navArgument("foodId") { type = NavType.StringType },
+                )
+            ) { backStackEntry ->
+                val foodId = backStackEntry.arguments?.getString("foodId") ?: ""
+
+                FoodsDetailScreen(
+                    navController = navController,
+                    snackbarHost = snackbarHostState,
+                    foodViewModel = foodViewModel,
+                    foodId = foodId
+                )
+            }
+
+            // Foods Edit Screen (Ubah Data Makanan)
+            composable(
+                route = ConstHelper.RouteNames.FoodsEdit.path,
+                arguments = listOf(
+                    navArgument("foodId") { type = NavType.StringType },
+                )
+            ) { backStackEntry ->
+                val foodId = backStackEntry.arguments?.getString("foodId") ?: ""
+
+                FoodsEditScreen(
+                    navController = navController,
+                    snackbarHost = snackbarHostState,
+                    foodViewModel = foodViewModel,
+                    foodId = foodId
+                )
+            }
         }
     }
-
 }

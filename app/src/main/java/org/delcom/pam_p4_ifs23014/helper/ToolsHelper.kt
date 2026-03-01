@@ -1,6 +1,5 @@
 package org.delcom.pam_p4_ifs23014.helper
 
-
 import android.content.Context
 import android.net.Uri
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -12,18 +11,38 @@ import org.delcom.pam_p4_ifs23014.BuildConfig
 import java.io.File
 
 object ToolsHelper {
-    fun getPlantImageUrl(plantId: String): String{
+
+    /**
+     * Mengambil URL gambar Tanaman dari Backend
+     */
+    fun getPlantImageUrl(plantId: String): String {
         return "${BuildConfig.BASE_URL_PANTS_API}plants/${plantId}/image"
     }
 
-    fun getProfilePhotoUrl(): String{
+    /**
+     * Mengambil URL gambar Makanan dari Backend (Fitur Baru)
+     */
+    fun getFoodImageUrl(foodId: String): String {
+        return "${BuildConfig.BASE_URL_PANTS_API}foods/${foodId}/image"
+    }
+
+    /**
+     * Mengambil URL foto Profil pengembang
+     */
+    fun getProfilePhotoUrl(): String {
         return "${BuildConfig.BASE_URL_PANTS_API}profile/photo"
     }
 
+    /**
+     * Mengubah String biasa menjadi RequestBody untuk keperluan Multipart (Text)
+     */
     fun String.toRequestBodyText(): RequestBody {
         return this.toRequestBody("text/plain".toMediaTypeOrNull())
     }
 
+    /**
+     * Mengubah Uri gambar dari Galeri/Kamera menjadi MultipartBody.Part untuk diupload ke API
+     */
     fun uriToMultipart(
         context: Context,
         uri: Uri,
@@ -41,6 +60,9 @@ object ToolsHelper {
         )
     }
 
+    /**
+     * Fungsi pembantu untuk mengubah Uri menjadi File fisik sementara di cache aplikasi
+     */
     fun uriToFile(context: Context, uri: Uri): File {
         val file = File.createTempFile("upload", ".tmp", context.cacheDir)
 

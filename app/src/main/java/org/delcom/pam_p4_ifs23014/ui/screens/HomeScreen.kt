@@ -49,6 +49,7 @@ fun HomeUI(){
     Column(
         modifier = Modifier.padding(top = 16.dp)
     ) {
+        // Kartu Judul Utama
         Card(
             modifier = Modifier
                 .fillMaxWidth()
@@ -58,7 +59,7 @@ fun HomeUI(){
         ) {
             Text(
                 style = MaterialTheme.typography.headlineMedium,
-                text = "\uD83C\uDF33 Delcom Plants \uD83C\uDF33",
+                text = "🍔 Petra Foods 🍕",
                 color = MaterialTheme.colorScheme.primary,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
@@ -67,62 +68,59 @@ fun HomeUI(){
             )
         }
 
+        // Baris untuk Emoji Makanan (Foods)
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {
-            // Emot 1
+            // Emot Food 1
             Card(
-                modifier = Modifier
-                    .padding(8.dp),
+                modifier = Modifier.padding(8.dp),
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
             ) {
                 Text(
                     style = MaterialTheme.typography.headlineLarge,
-                    text = "\uD83C\uDF31",
+                    text = "🍔",
                     modifier = Modifier.padding(16.dp)
                 )
             }
 
-            // Emot 2
+            // Emot Food 2
             Card(
-                modifier = Modifier
-                    .padding(8.dp),
+                modifier = Modifier.padding(8.dp),
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
             ) {
                 Text(
                     style = MaterialTheme.typography.headlineLarge,
-                    text = "\uD83C\uDF3F",
+                    text = "🍕",
                     modifier = Modifier.padding(16.dp)
                 )
             }
 
-            // Emot 3
+            // Emot Food 3
             Card(
-                modifier = Modifier
-                    .padding(8.dp),
+                modifier = Modifier.padding(8.dp),
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
             ) {
                 Text(
                     style = MaterialTheme.typography.headlineLarge,
-                    text = "\uD83C\uDF40",
+                    text = "🍜",
                     modifier = Modifier.padding(16.dp)
                 )
             }
 
-            // Emot 4
+            // Emot Food 4
             Card(
-                modifier = Modifier
-                    .padding(8.dp),
+                modifier = Modifier.padding(8.dp),
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
             ) {
                 Text(
                     style = MaterialTheme.typography.headlineLarge,
-                    text = "\uD83E\uDD6C",
+                    text = "🍩",
                     modifier = Modifier.padding(16.dp)
                 )
             }
